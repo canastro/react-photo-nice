@@ -1,8 +1,14 @@
-.pn-effect-figure {
-    cursor: pointer;
-    opacity: 0.5;
+.effects-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    margin: auto;
+    width: 500px;
 
-    &:hover {
-        opacity: 1;
+    .effects-thumbnails {
+        display: flex;
+        justify-content: center;
+        overflow-x: auto;
     }
 }

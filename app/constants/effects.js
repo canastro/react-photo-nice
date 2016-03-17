@@ -23,14 +23,52 @@ export const EFFECTS = {
     },
     colorize: {
         description: 'Colorize',
-        modifiers: []
+        modifiers: [{
+            key: 'color',
+            type: {
+                name: 'hex'
+            }
+        }, {
+            key: 'level',
+            type: {
+                name: 'slider',
+                min: 0,
+                max: 100
+            }
+        }]
     },
     gamma: {
         description: 'Gamma',
-        modifiers: []
+        modifiers: [{
+            key: 'adjustment',
+            type: {
+                name: 'slider',
+                min: 0,
+                max: 100
+            }
+        }]
     },
     grayscale: {
         description: 'Grayscale',
         modifiers: []
+    },
+    // invert: {
+    //     description: 'Invert',
+    //     modifiers: []
+    // },
+    sepia: {
+        description: 'Sepia',
+        modifiers: []
+    },
+    threshold: {
+        description: 'Threshold',
+        modifiers: [{
+            key: 'threshold',
+            type: {
+                name: 'slider',
+                min: 0,
+                max: 100
+            }
+        }]
     }
 };

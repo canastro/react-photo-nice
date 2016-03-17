@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import ImageFilter from 'image-filters';
 
+import EffectsList from './effects/effects-list';
 import EffectsContainer from './effects/effects-container';
 
 import '!style!css!sass!./photo-nice.scss';
@@ -13,12 +14,10 @@ export default class PhotoNice extends Component {
 
         this.state = {
             file: null,
-            imageFilter: null,
-            effects: []
+            effects: {}
         };
 
         this._onDrop = this._onDrop.bind(this);
-        this._handleImageLoad = this._handleImageLoad.bind(this);
         this._getContent = this._getContent.bind(this);
         this._addEffect = this._addEffect.bind(this);
     }
@@ -26,14 +25,6 @@ export default class PhotoNice extends Component {
     _onDrop (files) {
         this.setState({
             file: files[0]
-        });
-    }
-
-    _handleImageLoad() {
-        this.setState({
-            imageFilter: new ImageFilter({
-                from: '#pn-image'
-            })
         });
     }
 
@@ -47,47 +38,52 @@ export default class PhotoNice extends Component {
         }
 
         return (
-            <div>
-                <img id="pn-image" src={this.state.file.preview} onLoad={this._handleImageLoad}/>
-                <div id="target"/>
+            <div className="pn-images-container">
+                <img id="pn-original" src={this.state.file.preview}/>
+                <img id="pn-image" src={this.state.file.preview}/>
             </div>
         );
     }
 
     _addEffect (key, modifiers) {
 
-        const effects = [...this.state.effects, {
-            key,
-            modifiers
-        }];
+        const effects = {
+            ...this.state.effects,
+            [key]: modifiers
+        };
 
         let imageFilter = new ImageFilter({
-            from: '#pn-image'
+            from: '#pn-original'
         });
 
-        effects.forEach((effect) => {
-            imageFilter = imageFilter[effect.key](effect.modifiers);
+        Object.keys(effects).forEach((effectKey) => {
+            imageFilter = imageFilter[effectKey](effects[effectKey]);
         });
 
-        imageFilter.append('#target');
+        imageFilter.update('#pn-image');
 
         this.setState({
-            effects,
-            imageFilter
+            effects
         });
     }
 
     render () {
 
         let effectContainer;
+        let effectsList;
+
         if (this.state.file) {
             effectContainer = <EffectsContainer onAddEffect={this._addEffect}/>;
+            effectsList = <EffectsList effects={this.state.effects} />;
         }
 
         return (
-            <div>
-                { this._getContent() }
-                { effectContainer }
+            <div className="pn-editor-container">
+                <div className="pn-editor-main-container">
+                    { this._getContent() }
+                    { effectContainer }
+                </div>
+                { effectsList }
             </div>
         );
     }

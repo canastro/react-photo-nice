@@ -52,9 +52,11 @@ export default class EffectsContainer extends Component {
 
     render () {
         return (
-            <div>
+            <div className="effects-container">
+                <div className="effects-thumbnails">
+                    {this._getEffectsThumbnails()}
+                </div>
                 {this._getEffectControl()}
-                {this._getEffectsThumbnails()}
             </div>
         );
     }

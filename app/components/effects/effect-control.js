@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import { EFFECTS } from '../../constants/effects';
+import '!style!css!sass!./effect-control.scss';
 
 export default class EffectControl extends Component {
 
@@ -31,7 +32,7 @@ export default class EffectControl extends Component {
         this.props.onAddEffect(this.props.effectKey, this.state.modifiers);
     }
 
-    _onModifierChanged(key, event) {
+    _onModifierChanged (key, event) {
         event.preventDefault();
 
         this.setState({
@@ -42,17 +43,17 @@ export default class EffectControl extends Component {
         });
     }
 
-    _buildFormItem(item, index) {
+    _buildFormItem (item, index) {
         return (
             <input
                 type="text"
                 key={'effect-control-form-item-' + index}
-                defaultValue={this.state.modifiers[this.key]}
+                value={this.state.modifiers[item.key]}
                 onChange={this._onModifierChanged.bind(this, item.key)}/>
         );
     }
 
-    _buildFormContainer(modifiers) {
+    _buildFormContainer (modifiers) {
         return (
             <form onSubmit={this._onSubmit}>
                 { modifiers.map(this._buildFormItem) }
