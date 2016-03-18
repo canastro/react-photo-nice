@@ -43,7 +43,7 @@ export default class StackItem extends Component {
 
     render () {
         const checkboxClass = ['fa stack-item-checkbox'];
-        if (this.props.modifiers.isActive) {
+        if (this.props.isActive) {
             checkboxClass.push('fa-check-square-o');
         } else {
             checkboxClass.push('fa-square-o');
@@ -63,6 +63,7 @@ export default class StackItem extends Component {
 StackItem.propTypes = {
     id: PropTypes.string.isRequired,
     modifiers: PropTypes.object.isRequired,
+    isActive: PropTypes.bool.isRequired,
 
     onToggleFilter: PropTypes.func.isRequired,
     onRemoveFilter: PropTypes.func.isRequired

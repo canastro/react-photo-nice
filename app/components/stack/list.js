@@ -16,6 +16,7 @@ export default class StackList extends Component {
                 <StackItemContainer
                     key={item.key}
                     id={item.key}
+                    isActive={item.isActive}
                     modifiers={item.modifiers}/>
             );
         });

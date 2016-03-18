@@ -11,6 +11,7 @@ export default class StackItemContainer extends Component {
             <StackItem
                 id={this.props.id}
                 modifiers={this.props.modifiers}
+                isActive={this.props.isActive}
                 onRemoveFilter={this.props.removeFilter}
                 onToggleFilter={this.props.toggleFilter}/>
         );
@@ -20,6 +21,7 @@ export default class StackItemContainer extends Component {
 StackItemContainer.propTypes = {
     id: PropTypes.string.isRequired,
     modifiers: PropTypes.object,
+    isActive: PropTypes.bool.isRequired,
 
     removeFilter: PropTypes.func.isRequired,
     toggleFilter: PropTypes.func.isRequired
