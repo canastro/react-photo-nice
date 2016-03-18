@@ -1,4 +1,4 @@
-.pn-effect-figure {
+.pn-filter-figure {
     cursor: pointer;
     opacity: 0.5;
 
@@ -6,7 +6,7 @@
         opacity: 1;
     }
 
-    &.pn-effect-figure-selected {
+    &.pn-filter-figure-selected {
         opacity: 1;
     }
 }

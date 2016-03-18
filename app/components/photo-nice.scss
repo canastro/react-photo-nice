@@ -34,6 +34,6 @@ body {
     .pn-editor-main-container {
         display: flex;
         flex-direction: column;
-        width: 100%;
+        width: calc(100vw - 300px);
     }
 }

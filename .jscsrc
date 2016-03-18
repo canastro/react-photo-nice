@@ -39,7 +39,7 @@
     "disallowSpacesInsideArrayBrackets": true,
     "disallowSpacesInsideParentheses": true,
     "disallowDanglingUnderscores": false,
-    "requireCommaBeforeLineBreak": true,
+    "requireCommaBeforeLineBreak": false,
     "disallowSpaceAfterPrefixUnaryOperators": true,
     "disallowSpaceBeforePostfixUnaryOperators": true,
     "disallowSpaceBeforeBinaryOperators": [
@@ -68,5 +68,6 @@
     "requireDotNotation": true,
     "disallowNewlineBeforeBlockStatements": true,
     "disallowMultipleLineStrings": true,
-    "requireSpaceBeforeObjectValues": true
+    "requireSpaceBeforeObjectValues": true,
+    "requireTrailingComma": false
 }

@@ -1,12 +1,11 @@
-.effects-container {
+.filters-container {
     position: relative;
     display: flex;
     flex-direction: column;
     height: 200px;
     margin: auto;
-    width: 500px;
 
-    .effects-thumbnails {
+    .filters-thumbnails {
         display: flex;
         justify-content: center;
         overflow-x: auto;

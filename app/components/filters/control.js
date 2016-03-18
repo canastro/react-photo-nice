@@ -1,15 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 
-import { EFFECTS } from '../../constants/effects';
-import '!style!css!sass!./effect-control.scss';
+import { FILTERS } from '../../constants/filters';
+import '!style!css!sass!./control.scss';
 
-export default class EffectControl extends Component {
+export default class FilterControl extends Component {
 
     constructor (props) {
         super(props);
 
         this.state = {
-            config: EFFECTS[this.props.effectKey],
+            config: FILTERS[this.props.filterKey],
             modifiers: {}
         };
 
@@ -21,7 +21,7 @@ export default class EffectControl extends Component {
 
     componentWillReceiveProps (nextProps) {
         this.setState({
-            config: EFFECTS[nextProps.effectKey],
+            config: FILTERS[nextProps.filterKey],
             modifiers: {}
         });
     }
@@ -29,7 +29,8 @@ export default class EffectControl extends Component {
     _onSubmit (event) {
         event.preventDefault();
 
-        this.props.onAddEffect(this.props.effectKey, this.state.modifiers);
+        this.state.modifiers.isActive = true;
+        this.props.onAddfilter(this.props.filterKey, this.state.modifiers);
     }
 
     _onModifierChanged (key, event) {
@@ -47,7 +48,7 @@ export default class EffectControl extends Component {
         return (
             <input
                 type="text"
-                key={'effect-control-form-item-' + index}
+                key={'filter-control-form-item-' + index}
                 value={this.state.modifiers[item.key]}
                 onChange={this._onModifierChanged.bind(this, item.key)}/>
         );
@@ -64,7 +65,7 @@ export default class EffectControl extends Component {
 
     render () {
         return (
-            <div className="effect-control-container">
+            <div className="filter-control-container">
                 <h1>{this.state.config.description}</h1>
                 {this._buildFormContainer(this.state.config.modifiers)}
             </div>
@@ -72,7 +73,7 @@ export default class EffectControl extends Component {
     }
 }
 
-EffectControl.propTypes = {
-    effectKey: PropTypes.string.isRequired,
-    onAddEffect: PropTypes.func.isRequired
+FilterControl.propTypes = {
+    filterKey: PropTypes.string.isRequired,
+    onAddfilter: PropTypes.func.isRequired
 };

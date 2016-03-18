@@ -1,4 +1,4 @@
-export const EFFECTS = {
+export const FILTERS = {
     brightness: {
         description: 'Brightness',
         modifiers: [{

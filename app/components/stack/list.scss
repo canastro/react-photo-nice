@@ -1,0 +1,40 @@
+@import '../../assets/palette';
+
+.filters-list-container {
+    display: flex;
+    min-width: 300px;
+    height: 100%;
+}
+
+.filters-list {
+    flex: 1;
+    background-color: $color-grey;
+    margin: 10px;
+}
+
+.filter-list-item {
+    position: relative;
+    margin: 10px;
+    background-color: $color-grey-dark;
+    border-radius: 5px;
+    padding: 10px;
+
+    .fa-square-o,
+    .fa-trash {
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+
+        &:hover {
+            color: $color-teal;
+        }
+    }
+
+    .fa-trash {
+        right: 10px;
+    }
+
+    .fa-square-o {
+        left: 10px;
+    }
+}

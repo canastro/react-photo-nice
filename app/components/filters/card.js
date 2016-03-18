@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import '!style!css!sass!./effect.scss';
+import '!style!css!sass!./card.scss';
 
-export default class Effect extends Component {
+export default class FilterCard extends Component {
 
     constructor (props) {
         super(props);
@@ -19,10 +19,10 @@ export default class Effect extends Component {
             isSelected
         } = this.props;
 
-        const classNames = ['pn-effect-figure'];
+        const classNames = ['pn-filter-figure'];
 
         if (isSelected) {
-            classNames.push('pn-effect-figure-selected');
+            classNames.push('pn-filter-figure-selected');
         }
 
         return (
@@ -36,7 +36,7 @@ export default class Effect extends Component {
     }
 }
 
-Effect.propTypes = {
+FilterCard.propTypes = {
     id: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     isSelected: PropTypes.bool,
