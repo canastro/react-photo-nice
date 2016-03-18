@@ -1,10 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import '!style!css!sass!./list.scss';
 
 import { FILTERS } from '../../constants/filters';
 
 import FilterCard from './card';
-import FilterControl from './control';
+import FilterControlContainer from '../../containers/filters/control';
 
 export default class FiltersList extends Component {
 
@@ -12,7 +12,6 @@ export default class FiltersList extends Component {
         super(props);
 
         this.state = {
-            filters: FILTERS,
             selectedfilterKey: null
         };
 
@@ -26,12 +25,12 @@ export default class FiltersList extends Component {
     }
 
     _getfiltersThumbnails () {
-        return Object.keys(this.state.filters).map((key) => {
+        return Object.keys(FILTERS).map((key) => {
             return (
                 <FilterCard
                     key={key}
                     id={key}
-                    description={this.state.filters[key].description}
+                    description={FILTERS[key].description}
                     isSelected={key === this.state.selectedfilterKey}
                     onSelect={this._onSelect}/>
             );
@@ -44,9 +43,8 @@ export default class FiltersList extends Component {
         }
 
         return (
-            <FilterControl
-                filterKey={this.state.selectedfilterKey}
-                onAddfilter={this.props.onAddfilter}/>
+            <FilterControlContainer
+                filterKey={this.state.selectedfilterKey}/>
         );
     }
 
@@ -61,7 +59,3 @@ export default class FiltersList extends Component {
         );
     }
 }
-
-FiltersList.propTypes = {
-    onAddfilter: PropTypes.func.isRequired
-};

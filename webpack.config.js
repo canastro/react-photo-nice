@@ -8,7 +8,7 @@ module.exports = {
     entry: [
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
-        './sandbox/app.js'
+        './app/index.js'
     ],
     output: {
         path: path.join(__dirname, 'static'),
@@ -29,10 +29,6 @@ module.exports = {
             test: /\.js$/,
             loaders: ['react-hot', 'babel'],
             include: path.join(__dirname, 'app')
-        }, {
-            test: /\.js$/,
-            loaders: ['react-hot', 'babel'],
-            include: path.join(__dirname, 'sandbox')
         }, {
             test: /\.js$/,
             loader: 'eslint-loader',
