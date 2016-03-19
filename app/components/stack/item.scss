@@ -16,7 +16,6 @@
             height: 0;
             padding: 0;
             visibility: hidden;
-            transition: all ease;
         }
 
         > .stack-item-header {
@@ -54,7 +53,6 @@
         visibility: visible;
         padding: 10px;
         height: auto;
-        transition: all ease;
     }
 
     .stack-item-trash {

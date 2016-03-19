@@ -1,13 +1,37 @@
+@import '../../assets/palette';
+
 .filters-container {
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 200px;
+    height: 150px;
+    margin-bottom: 10px;
     margin: auto;
+    background-color: $color-grey;
+
+    -webkit-transition-property: height;
+    -webkit-transition-duration: 1s;
+    -webkit-transition-timing-function: ease;
+    transition-property: height;
+    transition-duration: 1s;
+    transition-timing-function: ease;
 
     .filters-thumbnails {
         display: flex;
         justify-content: center;
         overflow-x: auto;
+        overflow-y: hidden;
     }
+}
+
+.filters-container-closed {
+    height: 0;
+    overflow-y: hidden;
+
+    -webkit-transition-property: height;
+    -webkit-transition-duration: 1s;
+    -webkit-transition-timing-function: ease;
+    transition-property: height;
+    transition-duration: 1s;
+    transition-timing-function: ease;
 }

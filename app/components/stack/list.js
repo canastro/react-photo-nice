@@ -4,12 +4,11 @@ import StackItemContainer from '../../containers/stack/item';
 import '!style!css!sass!./list.scss';
 
 export default class StackList extends Component {
-
-    constructor (props) {
-        super(props);
-    }
-
     render () {
+
+        if (!this.props.isVisible) {
+            return <div className="stack-container stack-container-closed"></div>;
+        }
 
         const filtersElements = this.props.filters.map((item) => {
             return (
@@ -22,8 +21,8 @@ export default class StackList extends Component {
         });
 
         return (
-            <div className="filters-list-container">
-                <div className="filters-list">
+            <div className="stack-list-container">
+                <div className="stack-list">
                     {filtersElements}
                 </div>
             </div>
@@ -32,5 +31,6 @@ export default class StackList extends Component {
 }
 
 StackList.propTypes = {
-    filters: PropTypes.array.isRequired
+    filters: PropTypes.array.isRequired,
+    isVisible: PropTypes.bool.isRequired
 };

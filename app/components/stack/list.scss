@@ -1,40 +1,29 @@
 @import '../../assets/palette';
 
-.filters-list-container {
+.stack-list-container {
     display: flex;
-    min-width: 300px;
+    width: 300px;
     height: 100%;
+    -webkit-transition-property: width;
+    -webkit-transition-duration: 1s;
+    -webkit-transition-timing-function: ease;
+    transition-property: width;
+    transition-duration: 1s;
+    transition-timing-function: ease;
 }
 
-.filters-list {
+.stack-container-closed {
+    width: 0px;
+    -webkit-transition-property: width;
+    -webkit-transition-duration: 1s;
+    -webkit-transition-timing-function: ease;
+    transition-property: width;
+    transition-duration: 1s;
+    transition-timing-function: ease;
+}
+
+.stack-list {
     flex: 1;
     background-color: $color-grey;
     margin: 10px;
-}
-
-.filter-list-item {
-    position: relative;
-    margin: 10px;
-    background-color: $color-grey-dark;
-    border-radius: 5px;
-    padding: 10px;
-
-    .fa-square-o,
-    .fa-trash {
-        cursor: pointer;
-        position: absolute;
-        top: 10px;
-
-        &:hover {
-            color: $color-teal;
-        }
-    }
-
-    .fa-trash {
-        right: 10px;
-    }
-
-    .fa-square-o {
-        left: 10px;
-    }
 }

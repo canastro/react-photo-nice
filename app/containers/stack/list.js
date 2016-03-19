@@ -7,7 +7,9 @@ export default class StackListContainer extends Component {
 
     render () {
         return (
-            <StackList filters={this.props.filters} />
+            <StackList
+                filters={this.props.filters}
+                isVisible={this.props.isStackVisible}/>
         );
     }
 }
@@ -18,7 +20,8 @@ StackListContainer.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        filters: state.filters.selectedList
+        filters: state.filters.selectedList,
+        isStackVisible: state.filters.isStackVisible
     };
 }
 

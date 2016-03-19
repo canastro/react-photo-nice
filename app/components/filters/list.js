@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import '!style!css!sass!./list.scss';
 
 import { FILTERS } from '../../constants/filters';
@@ -49,6 +49,11 @@ export default class FiltersList extends Component {
     }
 
     render () {
+
+        if (!this.props.isVisible) {
+            return <div className="filters-container filters-container-closed"></div>;
+        }
+
         return (
             <div className="filters-container">
                 <div className="filters-thumbnails">
@@ -59,3 +64,7 @@ export default class FiltersList extends Component {
         );
     }
 }
+
+FiltersList.propTypes = {
+    isVisible: PropTypes.bool.isRequired
+};

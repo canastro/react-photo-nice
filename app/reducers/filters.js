@@ -4,12 +4,32 @@ import {
     TOGGLE_FILTER
 } from '../actions/filters';
 
+import {
+    TOGGLE_FILTERS_BAR_VISIBILITY,
+    TOGGLE_STACK_BAR_VISIBILITY
+} from '../actions/tools';
+
 import { findIndex, remove } from 'lodash';
 
 const defaultState = {
     selectedList: [],
-    dataURL: null
+    areFiltersVisible: false,
+    isStackVisible: false
 };
+
+function toggleFiltersBarVisibility(state, action) {
+    return {
+        ...state,
+        areFiltersVisible: !state.areFiltersVisible
+    };
+}
+
+function toggleStackBarVisibility(state, action) {
+    return {
+        ...state,
+        isStackVisible: !state.isStackVisible
+    };
+}
 
 function addFilter(state, action) {
     return {
@@ -59,6 +79,10 @@ export default function filters(state = defaultState, action) {
             return removeFilter(state, action);
         case TOGGLE_FILTER:
             return toggleFilter(state, action);
+        case TOGGLE_FILTERS_BAR_VISIBILITY:
+            return toggleFiltersBarVisibility(state, action);
+        case TOGGLE_STACK_BAR_VISIBILITY:
+            return toggleStackBarVisibility(state, action);
         default:
             return state;
     }

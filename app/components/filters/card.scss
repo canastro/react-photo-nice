@@ -1,4 +1,11 @@
 .pn-filter-figure {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
     cursor: pointer;
     opacity: 0.5;
 

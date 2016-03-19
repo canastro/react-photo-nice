@@ -3,7 +3,8 @@ import Dropzone from 'react-dropzone';
 import ImageFilter from 'image-filters';
 
 import StackListContainer from '../../containers/stack/list';
-import FiltersList from '../filters/list';
+import ToolsContainer from '../../containers/tools';
+import FiltersListContainer from '../../containers/filters/list';
 
 import '!style!css!sass!./home.scss';
 
@@ -68,16 +69,13 @@ export default class Home extends Component {
     render () {
 
         let filterContainer;
-        let stackList;
+        let stackListContainer;
+        let toolsContainer;
 
         if (this.state.file) {
-            filterContainer = <FiltersList onAddfilter={this._addfilter}/>;
-            stackList = (
-                <StackListContainer
-                    filters={this.state.filters}
-                    onToggleFilter={this._onToggleFilter}
-                    onRemoveFilter={this._removeFilter}/>
-            );
+            filterContainer = <FiltersListContainer />;
+            stackListContainer = <StackListContainer/>;
+            toolsContainer = <ToolsContainer/>;
         }
 
         return (
@@ -86,7 +84,8 @@ export default class Home extends Component {
                     { this._getContent() }
                     { filterContainer }
                 </div>
-                { stackList }
+                { stackListContainer }
+                { toolsContainer }
             </div>
         );
     }

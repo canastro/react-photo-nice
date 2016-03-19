@@ -6,7 +6,6 @@ import Home from '../../components/home/home';
 export default class HomeContainer extends Component {
 
     render () {
-        console.log('render HomeContainer');
         return (
             <Home filters={this.props.filters}/>
         );
