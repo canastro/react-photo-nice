@@ -1,28 +1,70 @@
 @import '../../assets/palette';
 
-.filter-list-item {
+.stack-list-item {
     position: relative;
     margin: 10px;
     background-color: $color-grey-dark;
-    border-radius: 5px;
-    padding: 10px;
 
-    .stack-item-checkbox,
+    border-width: 0 1px 1px;
+    border-color: $color-grey-darker;
+    border-style: solid;
+
+    &.stack-item-minimize {
+        border-width: 1px;
+
+        .stack-item-content {
+            height: 0;
+            padding: 0;
+            visibility: hidden;
+            transition: all ease;
+        }
+
+        > .stack-item-header {
+            border-style: none;
+        }
+    }
+
+    > .stack-item-header {
+        display: flex;
+        height: 30px;
+        justify-content: space-between;
+        align-items: center;
+
+        border-width: 1px 0;
+        border-color: $color-grey-darker;
+        border-style: solid;
+
+        h5 {
+            margin: 0;
+        }
+
+        .stack-item-checkbox,
+        .stack-item-expander {
+            width: 30px;
+            text-align: center;
+            cursor: pointer;
+
+            &:hover {
+                color: $color-teal;
+            }
+        }
+    }
+
+    .stack-item-content {
+        visibility: visible;
+        padding: 10px;
+        height: auto;
+        transition: all ease;
+    }
+
     .stack-item-trash {
         cursor: pointer;
         position: absolute;
-        top: 10px;
+        bottom: 10px;
+        right: 10px;
 
         &:hover {
             color: $color-teal;
         }
-    }
-
-    .stack-item-trash {
-        right: 10px;
-    }
-
-    .stack-item-checkbox {
-        left: 10px;
     }
 }

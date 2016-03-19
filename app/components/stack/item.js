@@ -6,8 +6,21 @@ export default class StackItem extends Component {
     constructor (props) {
         super(props);
 
+        this.state = {
+            isMinimize: true
+        };
+
         this._onToggleFilter = this._onToggleFilter.bind(this);
         this._onRemoveFilter = this._onRemoveFilter.bind(this);
+        this._onMinimize = this._onMinimize.bind(this);
+    }
+
+    _onMinimize (e) {
+        e.preventDefault();
+
+        this.setState({
+            isMinimize: !this.state.isMinimize
+        });
     }
 
     _onToggleFilter (e) {
@@ -42,6 +55,12 @@ export default class StackItem extends Component {
     }
 
     render () {
+        const itemClass = ['stack-list-item'];
+
+        if (this.state.isMinimize) {
+            itemClass.push('stack-item-minimize');
+        }
+
         const checkboxClass = ['fa stack-item-checkbox'];
         if (this.props.isActive) {
             checkboxClass.push('fa-check-square-o');
@@ -50,12 +69,20 @@ export default class StackItem extends Component {
         }
 
         return (
-            <div className="filter-list-item">
-                <h3>{this.props.id}</h3>
-                { this._getModifiers() }
-                <i className="fa fa-trash stack-item-trash" onClick={this._onRemoveFilter}></i>
-                <i className={checkboxClass.join(' ')} onClick={this._onToggleFilter}></i>
-            </div>
+            <article className={itemClass.join(' ')}>
+                <header className="stack-item-header">
+                    <i className={checkboxClass.join(' ')} onClick={this._onToggleFilter}></i>
+                    <h5>{this.props.id}</h5>
+                    <i className="fa fa-minus stack-item-expander" onClick={this._onMinimize}></i>
+                </header>
+
+                <div className="stack-item-content">
+                    <div className="stack-item-modifiers">
+                        { this._getModifiers() }
+                    </div>
+                    <i className="fa fa-trash stack-item-trash" onClick={this._onRemoveFilter}></i>
+                </div>
+            </article>
         );
     }
 }
