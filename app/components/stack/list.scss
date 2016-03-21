@@ -3,21 +3,23 @@
 .stack-list-container {
     display: flex;
     width: 300px;
+    min-width: 300px;
     height: 100%;
-    -webkit-transition-property: width;
+    -webkit-transition-property: width min-width;
     -webkit-transition-duration: 1s;
     -webkit-transition-timing-function: ease;
-    transition-property: width;
+    transition-property: width min-width;
     transition-duration: 1s;
     transition-timing-function: ease;
 }
 
 .stack-container-closed {
     width: 0px;
-    -webkit-transition-property: width;
+    min-width: 0;
+    -webkit-transition-property: width min-width;
     -webkit-transition-duration: 1s;
     -webkit-transition-timing-function: ease;
-    transition-property: width;
+    transition-property: width min-width;
     transition-duration: 1s;
     transition-timing-function: ease;
 }

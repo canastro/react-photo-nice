@@ -1,6 +1,7 @@
 export const ADD_FILTER = 'ADD_FILTER';
 export const REMOVE_FILTER = 'REMOVE_FILTER';
 export const TOGGLE_FILTER = 'TOGGLE_FILTER';
+export const SORT_FILTER = 'SORT_FILTER';
 
 export function addFilter(key, modifiers) {
     return (dispatch, getState) => {
@@ -26,6 +27,16 @@ export function toggleFilter(key) {
         return dispatch({
             type: TOGGLE_FILTER,
             key
+        });
+    };
+}
+
+export function sortFilter(fromIndex, toIndex) {
+    return (dispatch, getState) => {
+        return dispatch({
+            type: SORT_FILTER,
+            fromIndex,
+            toIndex
         });
     };
 }

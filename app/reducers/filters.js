@@ -1,7 +1,8 @@
 import {
     ADD_FILTER,
     REMOVE_FILTER,
-    TOGGLE_FILTER
+    TOGGLE_FILTER,
+    SORT_FILTER
 } from '../actions/filters';
 
 import {
@@ -70,6 +71,24 @@ function toggleFilter(state, action) {
     };
 }
 
+function sortFilter(state, action) {
+
+    const selectedList = [...state.selectedList];
+
+    if (action.toIndex >= selectedList.length) {
+        var k = action.toIndex - selectedList.length;
+        while ((k--) + 1) {
+            selectedList.push(undefined);
+        }
+    }
+    selectedList.splice(action.toIndex, 0, selectedList.splice(action.fromIndex, 1)[0]);
+
+    return {
+        ...state,
+        selectedList
+    };
+}
+
 export default function filters(state = defaultState, action) {
 
     switch (action.type) {
@@ -83,6 +102,8 @@ export default function filters(state = defaultState, action) {
             return toggleFiltersBarVisibility(state, action);
         case TOGGLE_STACK_BAR_VISIBILITY:
             return toggleStackBarVisibility(state, action);
+        case SORT_FILTER:
+            return sortFilter(state, action);
         default:
             return state;
     }

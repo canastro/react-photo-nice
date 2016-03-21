@@ -12,6 +12,15 @@ export default class Tools extends Component {
                 <li className="tool-item" onClick={this.props.onToggleStack}>
                     <i className="fa fa-bars"></i>
                 </li>
+                <li className="tool-item">
+                    <i className="fa fa-eyedropper"></i>
+                </li>
+                <li className="tool-item">
+                    <i className="fa fa-search-plus"></i>
+                </li>
+                <li className="tool-item">
+                    <i className="fa fa-search-minus"></i>
+                </li>
             </ul>
         );
     }

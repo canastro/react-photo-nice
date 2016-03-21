@@ -1,8 +1,29 @@
+@import '../../assets/palette';
+
 .filter-control-container {
-    position: absolute;
-    top: -100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+    margin: 10px;
+    background-color: $color-grey-dark;
+
+    border-width: 1px;
+    border-color: $color-grey-darker;
+    border-style: solid;
+
+    > .filter-control-header {
+        display: flex;
+        height: 30px;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5px;
+
+        border-bottom: 1px solid $color-grey-darker;
+
+        h5 {
+            margin: 0;
+        }
+    }
+
+    > .filter-control-content {
+        padding: 10px;
+    }
 }

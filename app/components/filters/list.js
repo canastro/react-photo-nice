@@ -25,8 +25,10 @@ export default class FiltersList extends Component {
     }
 
     _getfiltersThumbnails () {
-        return Object.keys(FILTERS).map((key) => {
-            return (
+        const thumbnails = [];
+
+        Object.keys(FILTERS).forEach((key) => {
+            thumbnails.push(
                 <FilterCard
                     key={key}
                     id={key}
@@ -34,16 +36,19 @@ export default class FiltersList extends Component {
                     isSelected={key === this.state.selectedfilterKey}
                     onSelect={this._onSelect}/>
             );
+
+            if (key === this.state.selectedfilterKey) {
+                thumbnails.push(this._getfilterControl());
+            }
         });
+
+        return thumbnails;
     }
 
     _getfilterControl () {
-        if (!this.state.selectedfilterKey) {
-            return null;
-        }
-
         return (
             <FilterControlContainer
+                key="filter-control-container"
                 filterKey={this.state.selectedfilterKey}/>
         );
     }
@@ -59,7 +64,6 @@ export default class FiltersList extends Component {
                 <div className="filters-thumbnails">
                     {this._getfiltersThumbnails()}
                 </div>
-                {this._getfilterControl()}
             </div>
         );
     }

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import { sortFilter } from '../../actions/filters';
 import StackList from '../../components/stack/list';
 
 export default class StackListContainer extends Component {
@@ -9,7 +10,8 @@ export default class StackListContainer extends Component {
         return (
             <StackList
                 filters={this.props.filters}
-                isVisible={this.props.isStackVisible}/>
+                isVisible={this.props.isStackVisible}
+                sortFilter={this.props.sortFilter}/>
         );
     }
 }
@@ -25,4 +27,6 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {})(StackListContainer);
+export default connect(mapStateToProps, {
+    sortFilter
+})(StackListContainer);

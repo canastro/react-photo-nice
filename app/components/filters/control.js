@@ -65,10 +65,15 @@ export default class FilterControl extends Component {
 
     render () {
         return (
-            <div className="filter-control-container">
-                <h1>{this.state.config.description}</h1>
-                {this._buildFormContainer(this.state.config.modifiers)}
-            </div>
+            <article className="filter-control-container">
+                <header className="filter-control-header">
+                    <h1>{this.state.config.description}</h1>
+                </header>
+
+                <div className="filter-control-content">
+                    {this._buildFormContainer(this.state.config.modifiers)}
+                </div>
+            </article>
         );
     }
 }
