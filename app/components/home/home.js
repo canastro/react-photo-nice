@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import Dropzone from 'react-dropzone';
-import ImageFilter from 'image-filters';
 
 import StackListContainer from '../../containers/stack/list';
 import ToolsContainer from '../../containers/tools';
@@ -13,38 +12,27 @@ export default class Home extends Component {
     constructor (props) {
         super(props);
 
-        this.state = {
-            file: null
-        };
-
         this._onDrop = this._onDrop.bind(this);
         this._getContent = this._getContent.bind(this);
     }
 
-    _applyFilters (filters) {
-        let imageFilter = new ImageFilter({
-            from: '#pn-original'
-        });
+    componentDidUpdate () {
+        const canvas = this.refs.canvas;
 
-        filters.forEach((filter) => {
-            if (!filter.isActive) {
-                return;
-            }
+        if (!canvas) {
+            return;
+        }
 
-            imageFilter = imageFilter[filter.key](filter.modifiers);
-        });
-
-        return imageFilter.getDataURL();
+        const context = this.refs.canvas.getContext('2d');
+        context.putImageData(this.props.image, 0, 0);
     }
 
     _onDrop (files) {
-        this.setState({
-            file: files[0]
-        });
+        this.props.addFile(files[0]);
     }
 
     _getContent () {
-        if (!this.state.file) {
+        if (!this.props.image) {
             return (
                 <Dropzone onDrop={this._onDrop}>
                     <div>Try dropping some files here, or click to select files to upload.</div>
@@ -52,27 +40,19 @@ export default class Home extends Component {
             );
         }
 
-        let imageSource;
-
-        if (this.props.filters.length) {
-            imageSource = this._applyFilters(this.props.filters);
-        }
-
         return (
             <div className="pn-images-container">
-                <img id="pn-original" src={this.state.file.preview}/>
-                <img id="pn-image" src={imageSource || this.state.file.preview}/>
+                <canvas ref="canvas"/>
             </div>
         );
     }
 
     render () {
-
         let filterContainer;
         let stackListContainer;
         let toolsContainer;
 
-        if (this.state.file) {
+        if (this.props.image) {
             filterContainer = <FiltersListContainer />;
             stackListContainer = <StackListContainer/>;
             toolsContainer = <ToolsContainer/>;
@@ -92,5 +72,7 @@ export default class Home extends Component {
 }
 
 Home.propTypes = {
-    filters: PropTypes.array
+    addFile: PropTypes.func.isRequired,
+    filters: PropTypes.array,
+    image: PropTypes.object
 };

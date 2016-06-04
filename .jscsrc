@@ -1,5 +1,4 @@
 {
-    "esnext": true,
     "requireCurlyBraces": [
         "if",
         "else",
@@ -33,13 +32,13 @@
         "beforeOpeningRoundBrace": true
     },
     "requireSpaceBetweenArguments": true,
-    "requireVarDeclFirst": false,
+    "requireVarDeclFirst": true,
     "requireBlocksOnNewline": true,
     "disallowEmptyBlocks": true,
     "disallowSpacesInsideArrayBrackets": true,
     "disallowSpacesInsideParentheses": true,
     "disallowDanglingUnderscores": false,
-    "requireCommaBeforeLineBreak": false,
+    "requireCommaBeforeLineBreak": true,
     "disallowSpaceAfterPrefixUnaryOperators": true,
     "disallowSpaceBeforePostfixUnaryOperators": true,
     "disallowSpaceBeforeBinaryOperators": [
@@ -69,5 +68,5 @@
     "disallowNewlineBeforeBlockStatements": true,
     "disallowMultipleLineStrings": true,
     "requireSpaceBeforeObjectValues": true,
-    "requireTrailingComma": false
+    requireTrailingComma: false
 }

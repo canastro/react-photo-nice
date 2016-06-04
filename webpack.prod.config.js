@@ -39,12 +39,6 @@ module.exports = {
                 path.resolve(__dirname, 'app')
             ]
         }, {
-            test:    /\.js$/,
-            loader: 'jscs-loader',
-            include: [
-                path.resolve(__dirname, 'app')
-            ]
-        }, {
             test: /\.scss$/,
             loaders: ['style', 'css', 'sass']
         }]

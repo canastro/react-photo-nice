@@ -1,4 +1,5 @@
 import {
+    ADD_FILE,
     ADD_FILTER,
     REMOVE_FILTER,
     TOGGLE_FILTER,
@@ -14,9 +15,17 @@ import { findIndex, remove } from 'lodash';
 
 const defaultState = {
     selectedList: [],
+    image: null,
     areFiltersVisible: false,
     isStackVisible: false
 };
+
+function addFile(state, action) {
+    return {
+        ...state,
+        image: action.image
+    };
+}
 
 function toggleFiltersBarVisibility(state, action) {
     return {
@@ -35,6 +44,7 @@ function toggleStackBarVisibility(state, action) {
 function addFilter(state, action) {
     return {
         ...state,
+        image: state.image,
         selectedList: [
             ...state.selectedList,
             {
@@ -76,7 +86,7 @@ function sortFilter(state, action) {
     const selectedList = [...state.selectedList];
 
     if (action.toIndex >= selectedList.length) {
-        var k = action.toIndex - selectedList.length;
+        let k = action.toIndex - selectedList.length;
         while ((k--) + 1) {
             selectedList.push(undefined);
         }
@@ -92,6 +102,8 @@ function sortFilter(state, action) {
 export default function filters(state = defaultState, action) {
 
     switch (action.type) {
+        case ADD_FILE:
+            return addFile(state, action);
         case ADD_FILTER:
             return addFilter(state, action);
         case REMOVE_FILTER:
